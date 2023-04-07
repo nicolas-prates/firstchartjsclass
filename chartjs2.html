@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartJS</title>
+</head>
+
+<body>
+    <div style="width: 500px; display: flex; gap: 20px;">
+        <canvas id="first_chart"></canvas>
+        <canvas id="second_chart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const second_ctx = document.getElementById('second_chart');
+        const first_ctx = document.getElementById('first_chart');
+
+        new Chart(second_ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                datasets: [
+                    {
+                        label: 'Temperatura média',
+                        data: [22, 24, 27, 23, 20, 18],
+                        borderWidth: 1,
+                        backgroundColor: '#FF6384'
+                    },
+                    {
+                        label: 'Umidade média',
+                        data: [90, 89, 93, 87, 88, 82],
+                        borderWidth: 1,
+                        backgroundColor: '#36A2EB',
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const labels = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                fill: false,
+                borderColor: '#FF6384',
+                backgroundColor: '#FF6384',
+                tension: 0.1
+            },
+            {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                fill: false,
+                borderColor: '#36A2EB',
+                backgroundColor: '#36A2EB',
+                tension: 0.1
+            }]
+        };
+        const config = {
+            type: 'line',
+            data: data,
+        };
+        new Chart(first_ctx, config);
+    </script>
+</body>
+
+</html>
